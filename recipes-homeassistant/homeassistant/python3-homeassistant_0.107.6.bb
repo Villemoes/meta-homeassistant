@@ -33,6 +33,14 @@ INITSCRIPT_NAME = "homeassistant"
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE:${PN} = "homeassistant.service"
 
+relax_pyyaml_req() {
+    for f in homeassistant.egg-info/requires.txt setup.py homeassistant/package_constraints.txt ; do
+        sed -i -e 's/pyyaml==5.3/pyyaml>=5.3/' $f
+    done
+}
+relax_pyyaml_req[dirs] = "${S}"
+do_patch[postfuncs] += "relax_pyyaml_req"
+
 do_install:append () {
     install -d -o ${HOMEASSISTANT_USER} -g homeassistant ${D}${HOMEASSISTANT_CONFIG_DIR}
 
@@ -75,7 +83,7 @@ RDEPENDS:${PN} = " \
     ${PYTHON_PN}-pysonos \
     ${PYTHON_PN}-python-slugify (>=3.0.3) \
     ${PYTHON_PN}-pytz (>=2019.02) \
-    ${PYTHON_PN}-pyyaml (= 5.3) \
+    ${PYTHON_PN}-pyyaml (>=5.3) \
     ${PYTHON_PN}-requests (>=2.23.0) \
     ${PYTHON_PN}-ruamel-yaml (>=0.15.100) \
     ${PYTHON_PN}-samsungctl (>=0.7.1) \
