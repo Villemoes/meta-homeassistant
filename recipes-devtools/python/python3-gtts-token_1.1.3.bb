@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a5eb74eb0b84de9e63b66147166bc4b5"
 
 inherit pypi setuptools3
 
-SRC_URI = "https://files.pythonhosted.org/packages/source/g/gtts-token/gTTS-token-${PV}.tar.gz"
+PYPI_PACKAGE = "gTTS-token"
 
 S = "${WORKDIR}/gTTS-token-${PV}"
 
