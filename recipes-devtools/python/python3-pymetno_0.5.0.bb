@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 inherit pypi setuptools3
 
-SRC_URI = "https://files.pythonhosted.org/packages/source/p/pymetno/PyMetno-${PV}.tar.gz"
+PYPI_PACKAGE = "PyMetno"
 
 S = "${WORKDIR}/PyMetno-${PV}"
 
